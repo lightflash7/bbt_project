@@ -36,7 +36,7 @@ async def request_http(data):
 
 def send_photo(file_stream):
     file_stream.seek(0)
-    result_code, result_text = request_http(the_stream)
+    result_code, result_text = request_http(file_stream)
     return result_code, result_text
 
 
