@@ -16,7 +16,7 @@ async def request_http(data):
             # part.set_content_disposition('binary')
             part.headers[aiohttp.hdrs.CONTENT_TYPE] = 'binary'
             print("包裝 multipart 中：字串")
-            mpwriter.append("the local size is " + str(len(data)))
+            # mpwriter.append("the local size is " + str(len(data)))
             # use the default content type plain/text
             print("送出 multipart 中，，，")
             async with session.post(full_url, data=mpwriter) as resp:
@@ -43,7 +43,7 @@ async def request_http(data):
 def send_photo(file_stream):
     file_stream.seek(0)
     loop = asyncio.get_event_loop()
-    result_code, result_text = loop.run_until_complete(request_http(data))
+    result_code, result_text = loop.run_until_complete(request_http(file_stream))
     return result_code, result_text
 
 
